@@ -19,6 +19,13 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "Shared"
             isStatic = true
+
+            /*
+            * export
+            * случае экспорта модуля, для него генерятся нормальные obj-c хэдеры и со стороны айоса доступны все декларации,
+            * которые в нём объявлены. Без экспорта доступны только транзитивные элементы
+            * */
+            //  export(libs.androidx.lifecycle.viewmodel)
         }
     }
     
@@ -26,7 +33,16 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
-            // put your Multiplatform dependencies here
+            implementation(libs.kotlinx.coroutines.core)
+        }
+        androidMain.dependencies {
+            implementation(libs.kotlinx.coroutines.android)
+        }
+        jvmMain.dependencies {
+            implementation(libs.kotlinx.coroutines.swing)
+        }
+        iosMain.dependencies {
+            implementation(libs.sqldelight.native.driver)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
