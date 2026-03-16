@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -23,6 +24,8 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.androidx.splashscreen)
             implementation(libs.androidx.core)
+
+            implementation(libs.koin.android)
 
             implementation(libs.compose.uiToolingPreview)
         }
@@ -69,6 +72,9 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+    buildFeatures {
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21

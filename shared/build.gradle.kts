@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.androidLibrary)
 }
 
@@ -17,7 +18,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "Shared"
+            baseName = "CommonKmp"
             isStatic = true
 
             /*
@@ -33,15 +34,29 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.bundles.ktorClientCommon)
+            implementation(libs.kotlinx.serialization.core)
+            implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.datetime)
+
+            implementation(libs.koin.core)
         }
         androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.okhttp3.logging.interceptor)
+            implementation(libs.timber)
+
             implementation(libs.kotlinx.coroutines.android)
         }
         jvmMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+
             implementation(libs.kotlinx.coroutines.swing)
         }
         iosMain.dependencies {
+            implementation(libs.ktor.client.ios)
+
             implementation(libs.sqldelight.native.driver)
         }
         commonTest.dependencies {
