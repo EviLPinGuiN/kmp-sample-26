@@ -5,7 +5,6 @@ import app.cash.sqldelight.driver.native.NativeSqliteDriver
 import com.itis.kmpproj26.Database
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.Settings
-import io.ktor.client.request.invoke
 import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
