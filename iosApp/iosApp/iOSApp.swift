@@ -6,7 +6,7 @@ struct iOSApp: App {
 
 
     init() {
-        initKoin()
+        initShared()
     }
 
     var body: some Scene {
@@ -15,7 +15,10 @@ struct iOSApp: App {
         }
     }
 
-    private func initKoin() {
+    private func initShared() {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "0"
+
         var isDebug = false
         #if DEBUG
         isDebug = true

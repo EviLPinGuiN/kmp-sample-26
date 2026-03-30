@@ -1,6 +1,5 @@
 package com.itis.kmpproj26.config
 
-import android.content.res.Resources
 import com.itis.kmpproj26.AppDelegate
 import com.itis.kmpproj26.BuildConfig
 import com.itis.kmpproj26.core.CommonKmp

@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.sqldelight)
 }
 
 kotlin {
@@ -40,6 +41,11 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
 
+            implementation(libs.sqldelight.coroutines.extensions)
+
+            implementation(libs.multiplatform.settings)
+            implementation(libs.multiplatform.settings.serialization)
+
             implementation(libs.koin.core)
         }
         androidMain.dependencies {
@@ -48,10 +54,12 @@ kotlin {
             implementation(libs.timber)
 
             implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.sqldelight.android.driver)
         }
         jvmMain.dependencies {
             implementation(libs.ktor.client.okhttp)
 
+            implementation(libs.sqldelight.sqlite.driver)
             implementation(libs.kotlinx.coroutines.swing)
         }
         iosMain.dependencies {
@@ -64,6 +72,15 @@ kotlin {
         }
     }
 }
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("com.itis.kmpproj26")
+        }
+    }
+}
+
 
 android {
     namespace = "com.itis.kmpproj26.shared"
