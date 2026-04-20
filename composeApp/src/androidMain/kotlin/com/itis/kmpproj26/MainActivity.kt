@@ -6,9 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.lifecycleScope
-import com.itis.kmpproj26.feature.DatabaseBookDataSource
-import kotlinx.coroutines.launch
+import com.itis.kmpproj26.feature.old.DatabaseBookDataSource
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {

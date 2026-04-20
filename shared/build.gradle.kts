@@ -27,7 +27,7 @@ kotlin {
             * случае экспорта модуля, для него генерятся нормальные obj-c хэдеры и со стороны айоса доступны все декларации,
             * которые в нём объявлены. Без экспорта доступны только транзитивные элементы
             * */
-            //  export(libs.androidx.lifecycle.viewmodel)
+              export(libs.androidx.lifecycle.viewmodel)
         }
     }
     
@@ -47,6 +47,9 @@ kotlin {
             implementation(libs.multiplatform.settings.serialization)
 
             implementation(libs.koin.core)
+            implementation(libs.koin.compose.vm)
+
+            api(libs.androidx.lifecycle.viewmodel)
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)

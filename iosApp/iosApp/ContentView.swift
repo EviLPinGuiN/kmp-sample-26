@@ -2,6 +2,10 @@ import SwiftUI
 import CommonKmp
 
 struct ContentView: View {
+
+    @StateObject
+    private var viewModel = IosWeatherViewModel(WeatherViewModel())
+
     @State private var showContent = false
     var body: some View {
         VStack {

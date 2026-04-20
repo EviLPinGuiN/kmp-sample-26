@@ -2,9 +2,7 @@ package com.itis.kmpproj26.core.database
 
 import app.cash.sqldelight.db.SqlDriver
 import com.itis.kmpproj26.Database
-import com.itis.kmpproj26.Database.Companion.invoke
-import com.itis.kmpproj26.feature.DatabaseBookDataSource
-import org.koin.core.module.Module
+import com.itis.kmpproj26.feature.old.DatabaseBookDataSource
 import org.koin.dsl.module
 
 val dbModule = module {
@@ -14,6 +12,6 @@ val dbModule = module {
     }
 
     factory {
-        DatabaseBookDataSource(get())
+        DatabaseBookDataSource(get(), get())
     }
 }
